@@ -1,60 +1,24 @@
 <script lang="ts">
-	const projects = [
-		{
-			name: "itd",
-			url: "https://github.com/Ku6epXBOCTuK/itd",
-			type: "game",
-			subtitle: "idle tower defence",
-			desc: "idle tower defence game built with three.js and miniplex ecs. enemies walk along a path, player places towers to defeat them. resources accumulate passively, allowing for strategic upgrades even when not actively playing.",
-			tech: ["three.js", "miniplex", "svelte"],
-			image: "images/itd.jpg",
-			imageUrl: "github.com/Ku6epXBOCTuK/itd",
-		},
-		{
-			name: "XBOCT-page",
-			url: "https://github.com/Ku6epXBOCTuK/XBOCT-page",
-			type: "extension",
-			subtitle: "newtab replacement",
-			desc: "chrome extension that replaces the newtab page. offline-first approach.",
-			tech: ["svelte 5", "typescript", "vite"],
-			image: "images/xboct-page.jpg",
-			imageUrl: "github.com/Ku6epXBOCTuK/XBOCT-page",
-		},
-		{
-			name: "twitch-panels",
-			url: "https://github.com/Ku6epXBOCTuK/twitch-panels",
-			type: "tool",
-			subtitle: "twitch panels creator",
-			desc: "visual editor for creating custom twitch panels.",
-			tech: ["svelte 5", "konva.js", "typescript"],
-			image: "images/twitch-panels.jpg",
-			imageUrl: "github.com/Ku6epXBOCTuK/twitch-panels",
-		},
-		{
-			name: "now_playing",
-			url: "https://github.com/Ku6epXBOCTuK/now_playing",
-			type: "widget",
-			subtitle: "obs browser source",
-			desc: "obs browser source widget that displays the currently playing track.",
-			tech: ["html", "css", "javascript"],
-			image: "images/now-playing.jpg",
-			imageUrl: "github.com/Ku6epXBOCTuK/now_playing",
-		},
-	];
+	import { getProjects } from "$lib/projects";
+
+	let projects = getProjects();
 </script>
 
 <div class="section-title">projects</div>
 
-{#each projects as project (project.name)}
+{#each projects as project (project.slug)}
 	<div class="project-item">
 		<div class="project-screenshot">
 			<div class="screenshot-bar">
 				<div class="dot-sm r"></div>
 				<div class="dot-sm y"></div>
 				<div class="dot-sm g"></div>
-				<span class="url">{project.imageUrl}</span>
+				<span class="url">{project.url.replace("https://github.com/", "")}</span
+				>
 			</div>
-			<img src={project.image} alt={project.name} />
+			{#if project.image}
+				<img src={project.image} alt={project.name} />
+			{/if}
 		</div>
 		<div class="project-name">
 			<a href={project.url} target="_blank">{project.name}</a>
@@ -62,9 +26,9 @@
 		<div class="project-meta">
 			<span>{project.type}</span> · {project.subtitle}
 		</div>
-		<div class="project-desc">{project.desc}</div>
+		<div class="project-desc">{project.description}</div>
 		<div class="project-tech">
-			{#each project.tech as t (t)}
+			{#each project.tags as t (t)}
 				<span>{t}</span>
 			{/each}
 		</div>
@@ -104,7 +68,7 @@
 		margin-bottom: 16px;
 		overflow: hidden;
 		position: relative;
-		background: #111;
+		background: var(--bg-light);
 	}
 
 	.project-screenshot::before {
@@ -145,7 +109,7 @@
 		align-items: center;
 		gap: 6px;
 		border-bottom: 1px solid var(--border);
-		background: #0e0e0e;
+		background: var(--bg);
 	}
 
 	.screenshot-bar .dot-sm {
@@ -153,14 +117,17 @@
 		height: 8px;
 		border-radius: 50%;
 	}
+
 	.screenshot-bar .dot-sm.r {
-		background: #ff5f57;
+		background: var(--accent4);
 	}
+
 	.screenshot-bar .dot-sm.y {
-		background: #febc2e;
+		background: var(--accent3);
 	}
+
 	.screenshot-bar .dot-sm.g {
-		background: #28c840;
+		background: var(--accent);
 	}
 
 	.screenshot-bar .url {

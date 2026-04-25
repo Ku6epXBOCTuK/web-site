@@ -3,7 +3,7 @@ title: itd
 type: game
 subtitle: idle tower defence
 description: idle tower defence game built with three.js and miniplex ecs.
-tech: three.js miniplex svelte
+tags: three.js miniplex svelte
 image: images/itd.jpg
 url: https://github.com/Ku6epXBOCTuK/itd
 ---
