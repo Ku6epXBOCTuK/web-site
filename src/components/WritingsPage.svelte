@@ -1,50 +1,24 @@
 <script lang="ts">
-	const writings = [
-		{
-			title: "offline-first chrome extension: lessons from building XBOCT-page",
-			date: "apr 2026",
-			excerpt:
-				"why i switched from start.me to building my own extension, how offline-first architecture eliminates loading delays.",
-			tag: "# engineering # creative",
-		},
-		{
-			title: "github ci with cocogitto: a day of debugging rulesets and tokens",
-			date: "mar 2026",
-			excerpt: "what should have been an hour turned into a full day.",
-			tag: "# engineering # devops",
-		},
-		{
-			title: "building an ecs for a browser game",
-			date: "mar 2026",
-			excerpt: "using miniplex with three.js for an idle tower defence.",
-			tag: "# engineering # gamedev",
-		},
-		{
-			title: "sveltekit static adapter: tips i learned the hard way",
-			date: "feb 2026",
-			excerpt: "adapter-static is simple until it isn't.",
-			tag: "# tutorial",
-		},
-		{
-			title: "why i stopped using ui component libraries",
-			date: "jan 2026",
-			excerpt: "building ui from scratch gives you exactly what you need.",
-			tag: "# design",
-		},
-	];
+	import { getPosts } from "$lib/posts";
+
+	const posts = getPosts();
 </script>
 
 <div class="section-title">writings</div>
 
-{#each writings as writing (writing.title)}
-	<div class="writing-item">
+{#each posts as post (post.slug)}
+	<a href="/writings/{post.slug}" class="writing-item">
 		<div class="writing-header">
-			<span class="writing-title">{writing.title}</span>
-			<span class="writing-date">{writing.date}</span>
+			<span class="writing-title">{post.title}</span>
+			<span class="writing-date">{post.date}</span>
 		</div>
-		<div class="writing-excerpt">{writing.excerpt}</div>
-		<div class="writing-tag">{writing.tag}</div>
-	</div>
+		<div class="writing-excerpt">{post.excerpt}</div>
+		<div class="writing-tag">
+			{#each post.tags as tag (tag)}
+				#{tag}
+			{/each}
+		</div>
+	</a>
 {/each}
 
 <style>
@@ -64,9 +38,11 @@
 	}
 
 	.writing-item {
+		display: block;
 		margin: 24px 0;
 		padding-bottom: 24px;
 		border-bottom: 1px solid var(--border);
+		text-decoration: none;
 	}
 
 	.writing-item:last-child {
@@ -86,8 +62,6 @@
 		color: var(--fg);
 		font-weight: 500;
 		font-size: 14px;
-		text-decoration: none;
-		cursor: pointer;
 	}
 
 	.writing-title:hover {
