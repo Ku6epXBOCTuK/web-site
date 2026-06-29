@@ -8,7 +8,7 @@ image: images/twitch-panels.jpg
 url: https://github.com/Ku6epXBOCTuK/twitch-panels
 ---
 
-# twitch-panels
+## twitch-panels
 
 visual editor for creating custom twitch panels.
 

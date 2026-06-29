@@ -8,7 +8,7 @@ url: https://github.com/Ku6epXBOCTuK/git-overhooks
 image: images/git-overhooks.jpg
 ---
 
-# git-overhooks
+## git-overhooks
 
 exploring a rust-based utility for managing git hooks.
 

@@ -8,7 +8,7 @@ url: https://github.com/Ku6epXBOCTuK/brul
 image: images/brul.jpg
 ---
 
-# brul
+## brul
 
 exploring native ui libraries for rust.
 

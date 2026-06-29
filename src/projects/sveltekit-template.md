@@ -8,7 +8,7 @@ url: https://github.com/Ku6epXBOCTuK/sveltekit-template
 image: images/sveltekit-template.jpg
 ---
 
-# sveltekit-template
+## sveltekit-template
 
 personal sveltekit project template.
 

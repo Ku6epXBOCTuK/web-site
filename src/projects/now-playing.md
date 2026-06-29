@@ -8,7 +8,7 @@ image: images/now-playing.jpg
 url: https://github.com/Ku6epXBOCTuK/now_playing
 ---
 
-# now_playing
+## now_playing
 
 obs browser source widget that displays the currently playing track.
 

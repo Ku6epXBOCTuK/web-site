@@ -8,7 +8,7 @@ image: images/itd.jpg
 url: https://github.com/Ku6epXBOCTuK/itd
 ---
 
-# itd
+## itd
 
 idle tower defence game built with three.js and miniplex ecs.
 

@@ -8,7 +8,7 @@ image: images/xboct-page.jpg
 url: https://github.com/Ku6epXBOCTuK/XBOCT-page
 ---
 
-# XBOCT-page
+## XBOCT-page
 
 chrome extension that replaces the newtab page.
 
