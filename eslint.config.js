@@ -14,7 +14,7 @@ const gitignorePath = path.resolve(import.meta.dirname, ".gitignore");
 
 export default defineConfig(
 	{
-		ignores: ["src-tauri/"],
+		ignores: ["refs/"],
 	},
 	includeIgnoreFile(gitignorePath),
 	js.configs.recommended,
@@ -79,6 +79,13 @@ export default defineConfig(
 			"no-magic-numbers": "off",
 			"@typescript-eslint/no-magic-numbers": "off",
 			"no-console": "off",
+			"no-unused-vars": [
+				"error",
+				{
+					argsIgnorePattern: "^_",
+					varsIgnorePattern: "^_",
+				},
+			],
 		},
 	},
 	{
